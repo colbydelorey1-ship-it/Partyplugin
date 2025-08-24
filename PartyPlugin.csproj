@@ -8,11 +8,11 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="RocketModFix.Rocket.API" Version="4.22.0" />
-    <PackageReference Include="RocketModFix.Rocket.Core" Version="4.21.3" />
-    <PackageReference Include="RocketModFix.Rocket.Unturned" Version="4.22.0" />
-  </ItemGroup>
+<ItemGroup>
+  <PackageReference Include="RocketModFix.Rocket.API" Version="4.22.0" />
+  <PackageReference Include="RocketModFix.Rocket.Core" Version="4.22.0" />
+  <PackageReference Include="RocketModFix.Rocket.Unturned" Version="4.22.0" />
+</ItemGroup>
 
   <!-- No Unity/Unturned DLLs required locally; the RocketModFix packages provide compile-time types -->
 </Project>
