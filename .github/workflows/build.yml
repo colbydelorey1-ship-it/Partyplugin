@@ -28,4 +28,4 @@ jobs:
         with:
           name: PartyPluginBuild
           path: |
-            PartyPlugin/bin/Release/**/*
+            bin/Release/**/*
