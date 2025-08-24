@@ -8,12 +8,61 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-<ItemGroup>
-  <PackageReference Include="RocketModFix.Rocket.API" Version="4.22.0" />
-  <PackageReference Include="RocketModFix.Rocket.Core" Version="4.22.0" />
-  <PackageReference Include="RocketModFix.Rocket.Unturned" Version="4.22.0" />
-  <PackageReference Include="RocketModFix.Unturned.Redist.Server" Version="3.25.7.2" />
-</ItemGroup>
+  <!-- Rocket packages (all aligned to 4.22.0) -->
+  <ItemGroup>
+    <PackageReference Include="RocketModFix.Rocket.API" Version="4.22.0" />
+    <PackageReference Include="RocketModFix.Rocket.Core" Version="4.22.0" />
+    <PackageReference Include="RocketModFix.Rocket.Unturned" Version="4.22.0" />
+    <!-- Unturned redist provides SDG/Steamworks/UnityEngine DLLs -->
+    <PackageReference Include="RocketModFix.Unturned.Redist.Server" Version="3.25.7.2" />
+  </ItemGroup>
 
-  <!-- No Unity/Unturned DLLs required locally; the RocketModFix packages provide compile-time types -->
+  <!-- Explicit references to the redist DLLs so the compiler sees Unity/SDG/Steamworks -->
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Helpful SDG runtime libs (not always strictly required, but avoids missing-type surprises) -->
+    <Reference Include="SDG.NetTransport">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/SDG.NetTransport.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SDG.NetPak.Runtime">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/SDG.NetPak.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SDG.Glazier.Runtime">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/SDG.Glazier.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SDG.HostBans.Runtime">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/SDG.HostBans.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnturnedDat">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/UnturnedDat.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEx">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/UnityEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SystemEx">
+      <HintPath>$(NuGetPackageRoot)RocketModFix.Unturned.Redist.Server/3.25.7.2/lib/net48/SystemEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
 </Project>
