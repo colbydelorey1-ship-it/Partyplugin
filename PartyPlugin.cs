@@ -1,26 +1,27 @@
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Rocket.API;
-using Rocket.Core.Logging;
-using Rocket.Core.Plugins;
-using Rocket.Unturned.Chat;
-using Rocket.Unturned.Player;
-using Steamworks;
-using SDG.Unturned;
+using Rocket.API;               // <-- make sure this using exists
+// other usings stay the same
 
 namespace PartyPlugin
 {
-    public class PartyConfig
+    public class PartyConfig : IRocketPluginConfiguration
     {
         public int InviteTimeoutSeconds = 60;
         public string ChatColorHex = "00FFAA";
         public bool AllowInvitesAcrossGroups = false;
+
+        public void LoadDefaults()
+        {
+            InviteTimeoutSeconds = 60;
+            ChatColorHex = "00FFAA";
+            AllowInvitesAcrossGroups = false;
+        }
     }
 
-    public class PartyPlugin : RocketPlugin<PartyConfig>
+    public class PartyPlugin : Rocket.Core.Plugins.RocketPlugin<PartyConfig>
     {
+        // ... rest of your file unchanged ...
+    }
+}
         private readonly Dictionary<ulong, List<PartyInvite>> _pendingInvites = new Dictionary<ulong, List<PartyInvite>>();
 
         protected override void Load()
