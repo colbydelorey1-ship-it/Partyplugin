@@ -9,15 +9,9 @@
   </PropertyGroup>
 
 <ItemGroup>
-  <!-- Rocket runtime (keep all three on the same version) -->
   <PackageReference Include="RocketModFix.Rocket.API" Version="4.22.0" />
   <PackageReference Include="RocketModFix.Rocket.Core" Version="4.22.0" />
   <PackageReference Include="RocketModFix.Rocket.Unturned" Version="4.22.0" />
-
-  <!-- UnityEngine shim used by Rocket builds (satisfies UnityEngine.* types) -->
-  <PackageReference Include="RocketModFix.Rocket.UnityEngine" Version="5.0.0.55" />
-
-  <!-- Unturned server redist (provides Assembly-CSharp.dll, Steamworks, SDG.* libs, etc.) -->
   <PackageReference Include="RocketModFix.Unturned.Redist.Server" Version="3.25.7.2" />
 </ItemGroup>
 
