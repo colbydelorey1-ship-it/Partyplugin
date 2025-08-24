@@ -1,4 +1,4 @@
-name: Build PartyPlugin
+name: Build PartyPlugin (RocketModFix)
 
 on:
   push:
@@ -9,22 +9,17 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2
-
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+      - uses: NuGet/setup-nuget@v2
+      - uses: microsoft/setup-msbuild@v2
 
       - name: Restore
-        run: nuget restore PartyPlugin.sln
+        run: nuget restore PartyPlugin.csproj
 
       - name: Build
-        run: msbuild PartyPlugin.sln /p:Configuration=Release /p:Platform="Any CPU"
+        run: msbuild PartyPlugin.csproj /p:Configuration=Release /p:Platform="Any CPU"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: PartyPluginBuild
-          path: |
-            bin/Release/**/*
+          path: bin/Release/**/*
